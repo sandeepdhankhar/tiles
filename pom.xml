@@ -39,8 +39,6 @@
     <description>Tiles 3: A framework for page composition.</description>
     <url>http://tiles.apache.org/framework/</url>
 
-    <ciManagement />
-
     <modules>
         <module>tiles-api</module>
         <module>tiles-core</module>
