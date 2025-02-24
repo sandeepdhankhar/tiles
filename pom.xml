@@ -38,11 +38,6 @@
     <name>Tiles 3</name>
     <description>Tiles 3: A framework for page composition.</description>
     <url>http://tiles.apache.org/framework/</url>
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/tiles/framework/trunk/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/tiles/framework/trunk/</developerConnection>
-        <url>http://svn.apache.org/viewvc/tiles/framework/trunk/</url>
-    </scm>
 
     <ciManagement />
 
@@ -63,19 +58,33 @@
         <module>tiles-test-pom</module>
     </modules>
 
-    <issueManagement>
-        <system>JIRA</system>
-        <url>https://issues.apache.org/jira/browse/TILES</url>
-        <!-- dev@tiles.apache.org :: this line satisfies INFRA-3329 -->
-    </issueManagement>
+   <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/sandeepdhankhar/tiles</url>
+    </repository>
 
-    <distributionManagement>
-        <site>
-            <id>apache-site</id>
-            <url>scp://people.apache.org/www/tiles.apache.org/framework</url>
-        </site>
     </distributionManagement>
-    <dependencyManagement>
+
+  <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>Sonatype repository</id>
+            <name>Sonatype's Maven repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+       <repository>
+     		<id>github</id>
+     		<name>GitHub OWNER Apache Maven Packages</name>
+     		<url>https://maven.pkg.github.com/sandeepdhankhar/*</url>
+   	</repository>
+    </repositories>
+ 
+   <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.apache.tiles</groupId>
@@ -342,17 +351,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.7.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
             </plugin>
         </plugins>
 
